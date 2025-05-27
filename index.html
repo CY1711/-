@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>導入深度學習建構電聲產品通氣材料比流阻特性之孔隙率計算模型</title>
+    <style>
+        body {
+            font-family: "標楷體", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333333;
+        }
+        .poster-container {
+            width: 90%;
+            max-width: 1200px;
+          
+            padding: 20px;
+            border: 1px solid #cccccc;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            grid-gap: 20px;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #006699;
+            color: white;
+        }
+        .logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+        .header-content {
+            text-align: center;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .title-en {
+            font-size: 20px;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+  .subtitle-container {
+            background-color: #FFFF00; /* 亮黄色背景 */
+            padding: 10px 0;
+            margin-top:0px;
+            
+        }
+        .subtitle {
+            font-size: 18px;
+            text-align: center;
+            font-weight: 600;
+	
+        }
+        .authors-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f5f9;
+            border-radius: 8px;
+        }
+      
+        .authors {
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-header {
+            background-color: #006699;
+            color: white;
+            padding: 8px 15px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .content {
+            padding: 0 15px;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .material-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .material-item {
+            text-align: center;
+            width: 48%;
+            margin-bottom: 20px;
+        }
+        .audio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+        .audio-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .audio-item {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .audio-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .audio-content img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 4px;
+        }
+        .audio-caption {
+            margin-top: 10px;
+            font-weight: 500;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #006699;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+             background-color: transparent; /* 将背景设为透明 */
+            border: none; /* 去除可能存在的边框 */
+            outline: none; /* 去除可能存在的轮廓 */
+        }
+.headphone-images {
+    display: flex;
+    width: auto;
+    max-height: 300px; /* 限制图片区域最大高度 */
+    margin-bottom: 10px;
+}
+
+.headphone-images img {
+    object-fit: contain;
+    height: auto;
+    border-radius: ;
+}
+        .headphone-model {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+   <div class="poster-container">
+        <!-- 标题区域 - 蓝色背景 -->
+        <div class="header">
+            <img src="1.png" alt="校徽" class="logo" style=" background-color: transparent; /* 将背景设为透明 */">
+            <div class="header-content">
+                <div class="title">導入深度學習建構電聲產品通氣材料比流阻特性之孔隙率計算模型</div>
+                <div class="title-en">Constructing a Porosity Calculation Model for Specific Flow Resistance Characteristics of Ventilation Materials in Electroacoustic Products Using Deep Learning</div>
+            </div>
+        </div>
+
+        <!-- 副标题区域 - 亮黄色背景，紧邻标题 -->
+        <div class="subtitle-container">
+            <div class="subtitle">精密系統設計學士學位學程 & 人工智慧技術與應用學士學位學程</div>
+        </div>
+
+        <!-- 作者信息 - 独立区域 -->
+        <div class="authors-container">
+            <div class="authors">專題組別：第十組 指導教授：劉育成 教授、周永振 教授<br>專題組長：莊筑雅  專題成員：黃宣禕、楊翔順、陳柏淞
+</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">耳機通氣材料說明</div>
+            <div class="content">
+                <p>耳機通氣材料俗稱調音紙，用於調節聲音響應與氣壓平衡，常見材料包括網布、不織布，可提升低頻表現、減少悶塞感並保護單體防塵防水，其設計需考量開孔率、孔徑與空氣阻抗，以兼顧音質與結構耐用性。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">耳機示意圖</div>
+            <div class="content">
+             <div class="headphone-images">
+            <img src="2.png" alt="耳機結構示意圖1" style="width: ; margin-right: ;">
+            <img src="3.png" alt="耳機結構示意圖2" style="width:;">
+        </div>
+                <div class="headphone-model">Headphone model (Razer Kraken V3 X)</div>
+                <table>
+                    <tr>
+                        <th>參數</th>
+                        <th>數值</th>
+                    </tr>
+                    <tr>
+                        <td>頻率範圍</td>
+                        <td>12 Hz~28kHz</td>
+                    </tr>
+                    <tr>
+                        <td>阻抗</td>
+                        <td>32Ω</td>
+                    </tr>
+                    <tr>
+                        <td>靈敏度</td>
+                        <td>103 dBSPL/mW, 1 kHz</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">通氣材料樣本</div>
+            <div class="content">
+                <div class="material-group">
+                    <div class="material-item">
+                        <h3>網布型通氣材料</h3>
+                        <img src="4.png" alt="網布型材料">
+                        
+                    </div>
+
+                    <div class="material-item">
+                        <h3>不織布型通氣材料</h3>
+                        <img src="5.png" alt="不織布型材料" style="margin-top:5px;">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="section">
+    <div class="section-header">頻率響應曲線及音響</div>
+    <div class="content">
+        <div class="audio-grid">
+            <!-- 第一列 -->
+            <div class="audio-col">
+                <div class="audio-item" onclick="togglePlay(this)">
+                    <div class="audio-thumbnail" style="position: relative;">
+                        <img src="6.png" alt="頻率響應曲線" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="66.png" alt="黑色球" style="
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            width: 50px;
+                            height: 50px;
+                            z-index: 2;
+                        ">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="audio-caption">沒有通氣材料的聲音</div>
+                    <audio class="audio-player" controls>
+                        <source src="01_NoNonwoven.wav" type="audio/wav">
+                        
+                    </audio>
+                </div>
+            </div>
+            
+            <!-- 第二列 -->
+            <div class="audio-col">
+                <div class="audio-item" onclick="togglePlay(this)">
+                    <div class="audio-thumbnail" style="position: relative;">
+                        <img src="7.png" alt="有不織布型通氣材料的聲音1" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="77.png" alt="黑色球" style="
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            width: 50px;
+                            height: 50px;
+                            z-index: 2;
+                        ">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="audio-caption">有不織布型通氣材料的聲音1</div>
+                    <audio class="audio-player" controls>
+                        <source src="01_Nonwoven1.wav" type="audio/wav">
+                    </audio>
+                </div>
+                
+                <div class="audio-item" onclick="togglePlay(this)">
+                    <div class="audio-thumbnail" style="position: relative;">
+                        <img src="8.png" alt="有不織布型通氣材料的聲音2" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="88.png" alt="黑色球" style="
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            width: 50px;
+                            height: 50px;
+                            z-index: 2;
+                        ">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="audio-caption">有不織布型通氣材料的聲音2</div>
+                    <audio class="audio-player" controls>
+                        <source src="01_Nonwoven2.wav" type="audio/wav">
+                    </audio>
+                </div>
+            </div>
+            
+            <!-- 第三列 -->
+            <div class="audio-col">
+                <div class="audio-item" onclick="togglePlay(this)">
+                    <div class="audio-thumbnail" style="position: relative;">
+                        <img src="9.png" alt="有網布通氣材料的聲音1" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="99.png" alt="黑色球" style="
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            width: 50px;
+                            height: 50px;
+                            z-index: 2;
+                        ">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="audio-caption">有網布通氣材料的聲音1</div>
+                    <audio class="audio-player" controls>
+                        <source src="02_Mesh1.wav" type="audio/wav">
+                    </audio>
+                </div>
+                
+                <div class="audio-item" onclick="togglePlay(this)">
+                    <div class="audio-thumbnail" style="position: relative;">
+                        <img src="10.png" alt="有網布通氣材料的聲音2" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="1010.png" alt="黑色球" style="
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            width: 50px;
+                            height: 50px;
+                            z-index: 2;
+                        ">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="audio-caption">有網布通氣材料的聲音2</div>
+                    <audio class="audio-player" controls>
+                        <source src="02_Mesh2.wav" type="audio/wav">
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+       
+  <script>
+        // 音频播放控制
+        function togglePlay(element) {
+            const audio = element.querySelector('.audio-player');
+            const playIcon = element.querySelector('.play-icon');
+            
+            // 停止其他所有音频
+            document.querySelectorAll('.audio-player').forEach(player => {
+                if (player !== audio && !player.paused) {
+                    player.pause();
+                    player.parentElement.querySelector('.play-icon').style.display = 'flex';
+                }
+            });
+            
+            if (audio.paused) {
+                audio.play().catch(error => {
+                    console.error('播放失败:', error);
+                    alert('音频播放失败，请确保文件路径正确且格式为WAV');
+                    playIcon.style.display = 'flex';
+                });
+                playIcon.style.display = 'none';
+            } else {
+                audio.pause();
+                playIcon.style.display = 'flex';
+            }
+        }
+        
+        // 监听音频播放结束事件
+        document.querySelectorAll('.audio-player').forEach(audio => {
+            audio.addEventListener('ended', function() {
+                const playIcon = this.parentElement.querySelector('.play-icon');
+                playIcon.style.display = 'flex';
+            });
+            
+            // 处理浏览器自动播放限制
+            audio.addEventListener('loadedmetadata', function() {
+                // 可以在这里检查音频时长等元数据
+            });
+        });
+    </script>
+</body>
+</html>
